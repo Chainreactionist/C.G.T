@@ -15,9 +15,6 @@
 ]]
 
 ----------------->> SETTINGS
-
-local Settings = {}
-
 ----------------->> SERVICES
 
 local ServerScriptService = game:GetService("ServerScriptService")
