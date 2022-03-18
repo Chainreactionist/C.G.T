@@ -1,0 +1,14 @@
+[package]
+name = "chainreactionist/game-template"
+version = "0.1.0"
+registry = "https://github.com/UpliftGames/wally-index"
+realm = "shared"
+
+[dependencies]
+knit = "sleitnick/knit@1.4.4"
+profileservice = "brittonfischer/profileservice@2.1.5"
+component = "sleitnick/component@2.4.4"
+trove = "sleitnick/trove@0.3.0"
+remote = "sleitnick/remote@1.0.4"
+replicaservice = "brittonfischer/replicaservice@0.1.0"
+promise = "evaera/promise@4.0.0"
