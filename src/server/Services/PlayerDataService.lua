@@ -60,7 +60,7 @@ PlayerDataService.ProfileReplicas = {}
 
 ----------------->> PUBLIC FUNCTIONS
 
-function PlayerDataService:GetDataProfile(player: Player)
+function PlayerDataService:GetProfile(player: Player)
 	assert(typeof(player) == "Instance" and player:IsDescendantOf(Players), "player is not of type player")
 
 	return Promise.new(function(resolve, reject)
@@ -76,6 +76,31 @@ function PlayerDataService:GetDataProfile(player: Player)
 		if Profile ~= nil then
 			if Profile:IsActive() then
 				resolve(Profile)
+			end
+		else
+			reject("Profile is nil")
+		end
+
+		reject("Player left the game")
+	end)
+end
+
+function PlayerDataService:GetData(player: Player)
+	assert(typeof(player) == "Instance" and player:IsDescendantOf(Players), "player is not of type player")
+
+	return Promise.new(function(resolve, reject)
+		repeat
+			if not player:IsDescendantOf(Players) then
+				reject("Player left the game")
+			end
+			task.wait(1)
+		until PlayerDataService.Profiles[player] ~= nil
+
+		local Profile = PlayerDataService.Profiles[player]
+
+		if Profile ~= nil then
+			if Profile:IsActive() then
+				resolve(Profile.Data)
 			end
 		else
 			reject("Profile is nil")
