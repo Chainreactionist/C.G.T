@@ -164,7 +164,7 @@ local function OnPlayerJoining(player: Player)
 		if player:IsDescendantOf(Players) == true then
 			local ProfileLoadStopTime = tick()
 			local ProfileReplica = ReplicaService.NewReplica({
-				ClassToken = ReplicaService.NewClassToken("ProfileReplica"),
+				ClassToken = ReplicaService.NewClassToken("PlayerData"),
 				Data = Profile.Data,
 				Replication = "All",
 			})
