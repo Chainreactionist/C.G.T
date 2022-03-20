@@ -18,6 +18,11 @@ version = "0.1.0"
 dependencies = [["component", "sleitnick/component@2.4.4"], ["knit", "sleitnick/knit@1.4.4"], ["profileservice", "brittonfischer/profileservice@2.1.5"], ["promise", "evaera/promise@4.0.0"], ["remote", "sleitnick/remote@1.0.4"], ["replicaservice", "brittonfischer/replicaservice@0.1.0"], ["table-util", "sleitnick/table-util@1.1.1"], ["trove", "sleitnick/trove@0.3.0"]]
 
 [[package]]
+name = "evaera/cmdr"
+version = "1.8.4"
+dependencies = []
+
+[[package]]
 name = "evaera/promise"
 version = "3.2.1"
 dependencies = []

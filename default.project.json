@@ -2,22 +2,22 @@
   "name": "A Chain Game Template",
   "tree": {
     "$className": "DataModel",
-
     "ReplicatedStorage": {
       "Shared": {
         "$path": "src/shared"
       },
       "Packages": {
         "$path": "Packages"
+      },
+      "ServerPackages": {
+        "$path": "ServerPackages"
       }
     },
-
     "ServerScriptService": {
       "Server": {
         "$path": "src/server"
       }
     },
-
     "StarterPlayer": {
       "StarterPlayerScripts": {
         "Client": {
@@ -25,7 +25,6 @@
         }
       }
     },
-
     "Workspace": {
       "$properties": {
         "FilteringEnabled": true

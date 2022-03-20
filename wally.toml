@@ -13,3 +13,6 @@ remote = "sleitnick/remote@1.0.4"
 replicaservice = "brittonfischer/replicaservice@0.1.0"
 promise = "evaera/promise@4.0.0"
 table-util = "sleitnick/table-util@1.1.1"
+
+[server-dependencies]
+Cmdr = "evaera/cmdr@1.8.4"
