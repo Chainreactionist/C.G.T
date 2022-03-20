@@ -165,6 +165,7 @@ local function OnPlayerJoining(player: Player)
 			local ProfileLoadStopTime = tick()
 			local ProfileReplica = ReplicaService.NewReplica({
 				ClassToken = ReplicaService.NewClassToken("PlayerData"),
+				Tags = { Player = player },
 				Data = Profile.Data,
 				Replication = "All",
 			})

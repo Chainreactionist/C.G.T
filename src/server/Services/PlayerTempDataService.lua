@@ -115,6 +115,7 @@ local function OnPlayerJoining(player: Player)
 	if player:IsDescendantOf(Players) == true then
 		local DataReplica = ReplicaService.NewReplica({
 			ClassToken = ReplicaService.NewClassToken("PlayerTempData"),
+			Tags = { Player = player },
 			Data = Data,
 			Replication = "All",
 		})
