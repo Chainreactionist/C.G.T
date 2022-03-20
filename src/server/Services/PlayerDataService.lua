@@ -60,7 +60,9 @@ PlayerDataService.ProfileReplicas = {}
 
 ----------------->> PUBLIC FUNCTIONS
 
-function PlayerDataService:GetPlayerDataProfile(player: Player)
+function PlayerDataService:GetDataProfile(player: Player)
+	assert(typeof(player) == "Instance" and player:IsDescendantOf(Players), "player is not of type player")
+
 	return Promise.new(function(resolve, reject)
 		repeat
 			if not player:IsDescendantOf(Players) then
@@ -83,7 +85,9 @@ function PlayerDataService:GetPlayerDataProfile(player: Player)
 	end)
 end
 
-function PlayerDataService:GetPlayerDataReplica(player: Player)
+function PlayerDataService:GetDataReplica(player: Player)
+	assert(typeof(player) == "Instance" and player:IsDescendantOf(Players), "player is not of type player")
+
 	return Promise.new(function(resolve, reject)
 		repeat
 			if not player:IsDescendantOf(Players) then
@@ -171,7 +175,7 @@ local function OnPlayerLeaving(player: Player)
 	if ProfileReplica ~= nil then
 		ProfileReplica:Destroy()
 		PlayerDataService.ProfileReplicas[player] = nil
-		warn(string.format("%s's profile has been released", player.Name))
+		warn(string.format("%s's replica has been destroyed", player.Name))
 	end
 end
 
