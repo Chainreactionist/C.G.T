@@ -26,7 +26,7 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 ----------------->> LOADED MODULES
 
 local Knit = require(ReplicatedStorage.Packages.knit)
-local Cmdr = require(ReplicatedStorage.ServerPackages.Cmdr)
+local Cmdr = require(ServerScriptService.ServerPackages.Cmdr)
 
 ----------------->> MODULE
 
@@ -45,11 +45,11 @@ local CommmandBarService = Knit.CreateService({ Name = "CommandBarService" })
 function CommmandBarService:KnitInit()
 	Cmdr:RegisterDefaultCommands()
 
-	for i, cmd: Folder in pairs(ReplicatedStorage.Shared.Commands:GetChildren()) do
-		local commandScript = cmd:FindFirstChild(cmd.Name, true)
-		local commandServerScript = cmd:FindFirstChild(cmd.Name .. "Server", true)
+	for i, CommandPair: Folder in pairs(ServerScriptService.Server.Commands:GetChildren()) do
+		local CommandScript = CommandPair:FindFirstChild(CommandPair.Name, true)
+		local CommandServerScript = CommandPair:FindFirstChild(CommandPair.Name .. "Server", true)
 
-		Cmdr:RegisterCommand(commandScript, commandServerScript)
+		Cmdr:RegisterCommand(CommandScript, CommandServerScript)
 	end
 end
 ----------------->> RETURN

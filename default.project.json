@@ -8,14 +8,14 @@
       },
       "Packages": {
         "$path": "Packages"
-      },
-      "ServerPackages": {
-        "$path": "ServerPackages"
       }
     },
     "ServerScriptService": {
       "Server": {
         "$path": "src/server"
+      },
+      "ServerPackages": {
+        "$path": "ServerPackages"
       }
     },
     "StarterPlayer": {
