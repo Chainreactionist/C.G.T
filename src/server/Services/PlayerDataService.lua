@@ -200,7 +200,6 @@ local function OnPlayerLeaving(player: Player)
 	if ProfileReplica ~= nil then
 		ProfileReplica:Destroy()
 		PlayerDataService.ProfileReplicas[player] = nil
-		warn(string.format("%s's replica has been destroyed", player.Name))
 	end
 end
 
