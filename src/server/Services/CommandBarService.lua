@@ -44,6 +44,13 @@ local CommmandBarService = Knit.CreateService({ Name = "CommandBarService" })
 
 function CommmandBarService:KnitInit()
 	Cmdr:RegisterDefaultCommands()
+
+	for i, cmd: Folder in pairs(ReplicatedStorage.Shared.Commands:GetChildren()) do
+		local commandScript = cmd:FindFirstChild(cmd.Name, true)
+		local commandServerScript = cmd:FindFirstChild(cmd.Name .. "Server", true)
+
+		Cmdr:RegisterCommand(commandScript, commandServerScript)
+	end
 end
 ----------------->> RETURN
 
