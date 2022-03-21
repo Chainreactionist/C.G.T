@@ -17,7 +17,6 @@
 ]]
 
 ----------------->> SETTINGS
-
 ----------------->> SERVICES
 
 local ServerScriptService = game:GetService("ServerScriptService")
@@ -33,13 +32,9 @@ local Cmdr = require(ServerScriptService.ServerPackages.Cmdr)
 local CommmandBarService = Knit.CreateService({ Name = "CommandBarService" })
 
 ----------------->> PUBLIC VARIABLES
-
 ----------------->> PUBLIC FUNCTIONS
-
 ----------------->> PRIVATE VARIABLES
-
 ----------------->> PRIVATE FUNCTIONS
-
 ----------------->> INITIALIZE & CONNECTIONS
 
 function CommmandBarService:KnitInit()
@@ -52,6 +47,7 @@ function CommmandBarService:KnitInit()
 		Cmdr:RegisterCommand(CommandScript, CommandServerScript)
 	end
 end
+
 ----------------->> RETURN
 
 return Cmdr
