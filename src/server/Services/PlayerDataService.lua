@@ -45,6 +45,7 @@ local ProfileService = require(ReplicatedStorage.Packages.profileservice)
 local ReplicaService = require(ReplicatedStorage.Packages.replicaservice)
 local Knit = require(ReplicatedStorage.Packages.knit)
 local Promise = require(ReplicatedStorage.Packages.promise)
+local t = require(ReplicatedStorage.Packages.t)
 
 ----------------->> MODULE
 
@@ -60,8 +61,8 @@ PlayerDataService.ProfileReplicas = {}
 
 ----------------->> PUBLIC FUNCTIONS
 
-function PlayerDataService:GetProfile(player: Player)
-	assert(typeof(player) == "Instance" and player:IsDescendantOf(Players), "player is not of type player")
+function PlayerDataService:GetProfile(player: Player | any)
+	assert(t.instance(player) and player:IsDescendantOf(Players))
 
 	return Promise.new(function(resolve, reject)
 		repeat
@@ -85,8 +86,8 @@ function PlayerDataService:GetProfile(player: Player)
 	end)
 end
 
-function PlayerDataService:GetData(player: Player)
-	assert(typeof(player) == "Instance" and player:IsDescendantOf(Players), "player is not of type player")
+function PlayerDataService:GetData(player: Player | any)
+	assert(t.instance(player) and player:IsDescendantOf(Players))
 
 	return Promise.new(function(resolve, reject)
 		repeat
@@ -110,8 +111,8 @@ function PlayerDataService:GetData(player: Player)
 	end)
 end
 
-function PlayerDataService:GetDataReplica(player: Player)
-	assert(typeof(player) == "Instance" and player:IsDescendantOf(Players), "player is not of type player")
+function PlayerDataService:GetDataReplica(player: Player | any)
+	assert(t.instance(player) and player:IsDescendantOf(Players))
 
 	return Promise.new(function(resolve, reject)
 		repeat
