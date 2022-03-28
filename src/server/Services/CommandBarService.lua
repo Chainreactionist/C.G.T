@@ -32,10 +32,10 @@ local TableUtil = require(ReplicatedStorage.Packages["table-util"])
 
 local CommmandBarService = Knit.CreateService({ Name = "CommandBarService" })
 
------------------>> PUBLIC VARIABLES
------------------>> PUBLIC FUNCTIONS
 ----------------->> PRIVATE VARIABLES
 ----------------->> PRIVATE FUNCTIONS
+----------------->> PUBLIC VARIABLES
+----------------->> PUBLIC FUNCTIONS
 
 function EndsWith(instance: Instance, ending: string)
 	return ending == "" or instance.Name:sub(-#ending) == ending
