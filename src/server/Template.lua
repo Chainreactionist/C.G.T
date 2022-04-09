@@ -24,13 +24,13 @@
 
 ----------------->> MODULE
 
------------------>> PUBLIC VARIABLES
-
------------------>> PUBLIC FUNCTIONS
-
 ----------------->> PRIVATE VARIABLES
 
 ----------------->> PRIVATE FUNCTIONS
+
+----------------->> PUBLIC VARIABLES
+
+----------------->> PUBLIC FUNCTIONS
 
 ----------------->> INITIALIZE & CONNECTIONS
 

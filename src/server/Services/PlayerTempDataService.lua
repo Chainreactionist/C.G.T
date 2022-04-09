@@ -42,12 +42,47 @@ local ReplicaService = require(ReplicatedStorage.Packages.replicaservice)
 local TableUtil = require(ReplicatedStorage.Packages["table-util"])
 local Knit = require(ReplicatedStorage.Packages.knit)
 local Promise = require(ReplicatedStorage.Packages.promise)
+local t = require(ReplicatedStorage.Packages.t)
 
 ----------------->> MODULE
 
 local PlayerTempDataService = Knit.CreateService({
 	Name = "PlayerTempDataService",
 })
+
+----------------->> PRIVATE VARIABLES
+
+----------------->> PRIVATE FUNCTIONS
+
+local function OnPlayerJoining(player: Player)
+	local Data = TableUtil.Copy(Settings.SaveStructure)
+
+	if player:IsDescendantOf(Players) == true then
+		local DataReplica = ReplicaService.NewReplica({
+			ClassToken = ReplicaService.NewClassToken("PlayerTempData"),
+			Tags = { Player = player },
+			Data = Data,
+			Replication = "All",
+		})
+
+		PlayerTempDataService.Datas[player] = Data
+		PlayerTempDataService.DataReplicas[player] = DataReplica
+	end
+end
+
+local function OnPlayerLeaving(player: Player)
+	local Data = PlayerTempDataService.Datas[player]
+	local DataReplica = PlayerTempDataService.DataReplicas[player]
+
+	if Data ~= nil then
+		PlayerTempDataService.Datas[player] = nil
+	end
+
+	if Data ~= nil then
+		DataReplica:Destroy()
+		PlayerTempDataService.DataReplicas[player] = nil
+	end
+end
 
 ----------------->> PUBLIC VARIABLES
 
@@ -56,8 +91,8 @@ PlayerTempDataService.DataReplicas = {}
 
 ----------------->> PUBLIC FUNCTIONS
 
-function PlayerTempDataService:GetData(player: Player)
-	assert(typeof(player) == "Instance" and player:IsDescendantOf(Players), "player is not of type player")
+function PlayerTempDataService:GetData(player: Player | any)
+	assert(t.instance("Player")(player))
 
 	return Promise.new(function(resolve, reject)
 		repeat
@@ -77,8 +112,8 @@ function PlayerTempDataService:GetData(player: Player)
 	end)
 end
 
-function PlayerTempDataService:GetDataReplica(player: Player)
-	assert(typeof(player) == "Instance" and player:IsDescendantOf(Players), "player is not of type player")
+function PlayerTempDataService:GetDataReplica(player: Player | any)
+	assert(t.instance("Player")(player))
 
 	return Promise.new(function(resolve, reject)
 		repeat
@@ -98,47 +133,6 @@ function PlayerTempDataService:GetDataReplica(player: Player)
 			reject("ProfileReplicas is nil")
 		end
 	end)
-end
-
------------------>> PRIVATE VARIABLES
-
------------------>> PRIVATE FUNCTIONS
-
-local function RoundDecimalPlaces(num, decimalPlaces)
-	local mult = 10 ^ (decimalPlaces or 0)
-	return math.floor(num * mult + 0.5) / mult
-end
-
-local function OnPlayerJoining(player: Player)
-	local Data = TableUtil.Copy(Settings.SaveStructure)
-
-	if player:IsDescendantOf(Players) == true then
-		local DataReplica = ReplicaService.NewReplica({
-			ClassToken = ReplicaService.NewClassToken("PlayerTempData"),
-			Tags = { Player = player },
-			Data = Data,
-			Replication = "All",
-		})
-
-		PlayerTempDataService.Datas[player] = Data
-		PlayerTempDataService.DataReplicas[player] = DataReplica
-
-		warn(string.format("%s's data has been loaded", player.Name))
-	end
-end
-
-local function OnPlayerLeaving(player: Player)
-	local Data = PlayerTempDataService.Datas[player]
-	local DataReplica = PlayerTempDataService.DataReplicas[player]
-
-	if Data ~= nil then
-		PlayerTempDataService.Datas[player] = nil
-	end
-
-	if Data ~= nil then
-		DataReplica:Destroy()
-		PlayerTempDataService.DataReplicas[player] = nil
-	end
 end
 
 ----------------->> INITIALIZE & CONNECTIONS
