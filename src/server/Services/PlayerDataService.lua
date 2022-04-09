@@ -48,19 +48,23 @@ local Knit = require(ReplicatedStorage.Packages.knit)
 local Promise = require(ReplicatedStorage.Packages.promise)
 local t = require(ReplicatedStorage.Packages.t)
 
+--Reconsider using T
+
+type UpdateData = { Id: string, SenderId: number, RecieverId: number, Data: {} }
+
 local Settings = {
+	MockProfiles = false,
 	SaveStructure = {
 		SomeData = 0,
 	},
 }
 
 local Types = {
-	UpdateData = t.interface({
+	UpdateData = t.strictInterface({
+		Id = t.string,
 		SenderId = t.number,
 		RecieverId = t.number,
-		UpdateData = t.optional(
-			t.interface({ Type = t.string, SenderId = t.number, RecieverId = t.number, Data = t.optional(t.table) })
-		),
+		Data = t.optional(t.table),
 	}),
 }
 
@@ -80,7 +84,7 @@ local PlayerDataService = Knit.CreateService({
 local function OnPlayerJoining(player: Player)
 	local PlayerProfile
 
-	if RunService:IsStudio() then
+	if RunService:IsStudio() and Settings.MockProfiles then
 		PlayerProfile = PlayerDataService.ProfileStore.Mock:LoadProfileAsync("Player_" .. tostring(player.UserId))
 	else
 		PlayerProfile = PlayerDataService.ProfileStore:LoadProfileAsync("Player_" .. tostring(player.UserId))
@@ -105,15 +109,16 @@ local function OnPlayerJoining(player: Player)
 			PlayerDataService.Profiles[player] = PlayerProfile
 			PlayerDataService.ProfileReplicas[player] = ProfileReplica
 
-			local function OnActiveGlobalUpdate(UpdateId, UpdateData)
+			local function OnActiveGlobalUpdate(UpdateId: number, UpdateData: UpdateData)
 				assert(t.number(UpdateId) and Types.UpdateData(UpdateData))
 
 				PlayerProfile.GlobalUpdates:LockActiveUpdate(UpdateId)
 			end
 
-			local function OnLockedGlobalUpdate(UpdateId, UpdateData)
+			local function OnLockedGlobalUpdate(UpdateId: number, UpdateData: UpdateData)
 				assert(t.number(UpdateId) and Types.UpdateData(UpdateData))
-				local LockedUpdateHandler = PlayerDataService.GlobalUpdateHandlers:FindFirstChild(UpdateData.Type)
+
+				local LockedUpdateHandler = PlayerDataService.GlobalUpdateHandlers:FindFirstChild(UpdateData.Id)
 
 				if LockedUpdateHandler then
 					Promise.try(require(LockedUpdateHandler), UpdateId, UpdateData)
@@ -245,7 +250,7 @@ function PlayerDataService:GetDataReplica(player: Player | any)
 	end)
 end
 
-function PlayerDataService:AddGlobalUpdate(UpdateData)
+function PlayerDataService:AddGlobalUpdate(UpdateData: UpdateData)
 	Types.UpdateData(UpdateData)
 
 	return Promise.new(function(resolve, reject)
