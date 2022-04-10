@@ -18,6 +18,8 @@
 
 local SETTINGS = {}
 
+local TYPES = {}
+
 ----- Loaded Modules -----
 
 ----- Module Table -----
