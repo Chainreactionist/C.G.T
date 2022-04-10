@@ -258,7 +258,6 @@ function PlayerDataService:AddGlobalUpdate(UpdateData: UpdateData)
 			"Player_" .. tostring(UpdateData.RecieverId),
 			function(globalUpdates)
 				globalUpdates:AddActiveUpdate(UpdateData)
-				print("Added Global Update")
 			end
 		)
 		resolve()
