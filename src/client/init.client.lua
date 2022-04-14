@@ -16,48 +16,41 @@
 	Methods [ClassName]:
 ]]
 
------------------>> SETTINGS
-
 local Settings = {}
 
------------------>> SERVICES
+----- Loaded Modules -----
 
 local StarterPlayerScripts = script.Parent
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
------------------>> LOADED MODULES
-
 local Knit = require(ReplicatedStorage.Packages.knit)
 
------------------>> MODULE
+----- Module Table -----
 
 local Module = {}
 
------------------>> PRIVATE VARIABLES
+----- Private Variables -----
 
+local KnitStartTime = tick()
 local ServicesFolder = StarterPlayerScripts.Client.Controllers
 
------------------>> PRIVATE FUNCTIONS
+----- Private functions -----
 
 local function RoundDecimalPlaces(num, decimalPlaces)
 	local mult = 10 ^ (decimalPlaces or 0)
 	return math.floor(num * mult + 0.5) / mult
 end
 
------------------>> PUBLIC VARIABLES
------------------>> PUBLIC FUNCTIONS
------------------>> INITIALIZE & START
+----- Public -----
+
+----- Initialize & Connections -----
 
 Knit.AddControllers(ServicesFolder)
 
-local KnitStartTime = tick()
 Knit.Start()
 	:andThen(function()
 		warn(string.format("Client Started (%s)", RoundDecimalPlaces(tostring(tick() - KnitStartTime), 5)))
 	end)
 	:catch(warn)
-
------------------>> CONNECTIONS
------------------>> RETURN
 
 return Module

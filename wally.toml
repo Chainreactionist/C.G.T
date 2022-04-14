@@ -14,6 +14,7 @@ replicaservice = "brittonfischer/replicaservice@0.1.0"
 promise = "evaera/promise@4.0.0"
 table-util = "sleitnick/table-util@1.1.1"
 t = "osyrisrblx/t@3.0.0"
+gameanalyticssdk = "chainreactionist/test1@2.1.35"
 
 [server-dependencies]
 Cmdr = "evaera/cmdr@1.8.4"

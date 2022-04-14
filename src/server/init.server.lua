@@ -3,8 +3,8 @@
 --[[
 {C.G.T}
 
--[ServerRuntime]---------------------------------------
-	Responsible for initializing every server sided module(Services) and classes that auto apply to objects(Components)
+-[Client]---------------------------------------
+	Responsible for initializing every client sided module(Services) and Components(classes) that auto apply to objects
 	
 	Members:
 	
@@ -51,12 +51,10 @@ end
 
 ----- Public -----
 
------ Initialize -----
+----- Initialize & Connections -----
 
 Knit.AddServices(ServicesFolder)
 
 Knit.Start():andThen(OnServerStartSuccess):catch(OnServerStartFailure):await()
-
------ Connections -----
 
 return Module
