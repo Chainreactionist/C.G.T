@@ -4,7 +4,7 @@
 {C.G.T}
 
 -[Client]---------------------------------------
-	Responsible for initializing every client sided module(Services) and Components(classes) that auto apply to objects
+	Responsible for initializing every server sided module(Services) and Components(classes) that auto apply to objects
 	
 	Members:
 	

@@ -1,20 +1,19 @@
 --!strict
 
 --[[
-	NAME: Chainreactionist[784730716] & SomeOtherGuy101[000000000]
-	DATE CREATED: Tuesday, March 15, 2022
-	DESCRIPTION: A game template
---]]
+{C.G.T}
 
---[[
+-[Client]---------------------------------------
+	Responsible for initializing every client sided module(Services) and Components(classes) that auto apply to objects
+	
 	Members:
-
+	
 	Functions:
-
+	
 	Members [ClassName]:
-
+	
 	Methods [ClassName]:
-]]
+--]]
 
 local Settings = {}
 
