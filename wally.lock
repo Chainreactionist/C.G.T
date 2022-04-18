@@ -15,7 +15,12 @@ dependencies = []
 [[package]]
 name = "chainreactionist/game-template"
 version = "0.1.0"
-dependencies = [["component", "sleitnick/component@2.4.4"], ["knit", "sleitnick/knit@1.4.4"], ["profileservice", "brittonfischer/profileservice@2.1.5"], ["promise", "evaera/promise@4.0.0"], ["remote", "sleitnick/remote@1.0.4"], ["replicaservice", "brittonfischer/replicaservice@0.1.0"], ["t", "osyrisrblx/t@3.0.0"], ["table-util", "sleitnick/table-util@1.1.1"], ["trove", "sleitnick/trove@0.3.0"]]
+dependencies = [["component", "sleitnick/component@2.4.4"], ["gameanalyticssdk", "chainreactionist/test4@2.1.35"], ["knit", "sleitnick/knit@1.4.4"], ["profileservice", "brittonfischer/profileservice@2.1.5"], ["promise", "evaera/promise@4.0.0"], ["remote", "sleitnick/remote@1.0.4"], ["replicaservice", "brittonfischer/replicaservice@0.1.0"], ["t", "osyrisrblx/t@3.0.0"], ["table-util", "sleitnick/table-util@1.1.2"], ["trove", "sleitnick/trove@0.3.0"]]
+
+[[package]]
+name = "chainreactionist/test4"
+version = "2.1.35"
+dependencies = []
 
 [[package]]
 name = "evaera/cmdr"
@@ -79,7 +84,7 @@ dependencies = []
 
 [[package]]
 name = "sleitnick/table-util"
-version = "1.1.1"
+version = "1.1.2"
 dependencies = []
 
 [[package]]

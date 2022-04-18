@@ -1,52 +1,46 @@
 --!strict
 
 --[[
-	DESCRIPTION:
+{C.G.T}
+
+-[CommandBarController]---------------------------------------
+	Allows you to easily manage essential tools required to run admin commands(Keybinds, e.t.c)
+	
+	Members:
+	
+	Functions:
+	
+	Members [ClassName]:
+	
+	Methods [ClassName]:
 --]]
 
---[[
-	MEMBERS:
+SETTINGS = {}
 
-	FUNCTIONS:
-
-	MEMBERS [ClassName]:
-
-	METHODS [ClassName]:
-
-	LINKS:
-]]
-
------------------>> SETTINGS
-
------------------>> SERVICES
+----- Loaded Modules -----
 
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
-
------------------>> LOADED MODULES
 
 local Knit = require(ReplicatedStorage.Packages.knit)
 local Cmdr = require(ReplicatedStorage:WaitForChild("CmdrClient"))
 
------------------>> MODULE
+----- Module Table -----
 
 local CommandBarController = Knit.CreateController({
 	Name = "CommandBarController",
 	Client = {},
 })
 
------------------>> PUBLIC VARIABLES
+----- Private Variables -----
 
------------------>> PUBLIC FUNCTIONS
+----- Private functions -----
 
------------------>> PRIVATE VARIABLES
+----- Public -----
 
------------------>> PRIVATE FUNCTIONS
-
------------------>> INITIALIZE & CONNECTIONS
+----- Initialize & Connections -----
 
 function CommandBarController:KnitInit()
 	Cmdr:SetActivationKeys({ Enum.KeyCode.BackSlash })
 end
 
------------------>> RETURN
 return CommandBarController

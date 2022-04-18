@@ -1,37 +1,35 @@
 --!strict
 
 --[[
-	DESCRIPTION:
+{C.G.T}
+
+-[ModuleName]---------------------------------------
+	Module description
+	
+	Members:
+	
+	Functions:
+	
+	Members [ClassName]:
+	
+	Methods [ClassName]:
+	
 --]]
 
---[[
-	MEMBERS:
+local SETTINGS = {}
 
-	FUNCTIONS:
+----- Loaded Modules -----
 
-	MEMBERS [ClassName]:
+----- Module Table -----
 
-	METHODS [ClassName]:
+local Module = {}
 
-	LINKS:
-]]
+----- Private Variables -----
 
------------------>> SETTINGS
+----- Private functions -----
 
------------------>> SERVICES
+----- Public -----
 
------------------>> LOADED MODULES
+----- Initialize & Connections -----
 
------------------>> MODULE
-
------------------>> PRIVATE VARIABLES
-
------------------>> PRIVATE FUNCTIONS
-
------------------>> PUBLIC VARIABLES
-
------------------>> PUBLIC FUNCTIONS
-
------------------>> INITIALIZE & CONNECTIONS
-
------------------>> RETURN
+return Module

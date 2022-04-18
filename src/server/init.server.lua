@@ -1,36 +1,39 @@
 --!strict
 
 --[[
-	DESCRIPTION: Responsible for initializing every server sided module(Services) and classes that auto apply to objects(Components)
+{C.G.T}
+
+-[Client]---------------------------------------
+	Responsible for initializing every server sided module(Services) and Components(classes) that auto apply to objects
+	
+	Members:
+	
+	Functions:
+	
+	Members [ClassName]:
+	
+	Methods [ClassName]:
 --]]
 
---[[
-	MEMBERS:
+local SETTINGS = {}
 
-	FUNCTIONS:
-
-	MEMBERS [ClassName]:
-
-	METHODS [ClassName]:
-]]
-
------------------>> SETTINGS
------------------>> SERVICES
+----- Loaded Modules -----
 
 local ServerScriptService = game:GetService("ServerScriptService")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
------------------>> LOADED MODULES
-
 local Knit = require(ReplicatedStorage.Packages.knit)
 
------------------>> MODULE
------------------>> PRIVATE VARIABLES
+----- Module Table -----
+
+local Module = {}
+
+----- Private Variables -----
 
 local ServicesFolder = ServerScriptService.Server.Services
-local KnitStartTime = tick()
+local StartTime = tick()
 
------------------>> PRIVATE FUNCTIONS
+----- Private functions -----
 
 local function RoundDecimalPlaces(num, decimalPlaces)
 	local mult = 10 ^ (decimalPlaces or 0)
@@ -38,21 +41,20 @@ local function RoundDecimalPlaces(num, decimalPlaces)
 end
 
 local function OnServerStartSuccess()
-	warn(string.format("Server Started (%s)", RoundDecimalPlaces(tostring(tick() - KnitStartTime), 5)))
+	warn(string.format("Server Started (%s)", RoundDecimalPlaces(tostring(tick() - StartTime), 5)))
 end
 
 local function OnServerStartFailure(error)
-	warn(string.format("Server Errored (%s)", RoundDecimalPlaces(tostring(tick() - KnitStartTime), 5)))
+	warn(string.format("Server Errored (%s)", RoundDecimalPlaces(tostring(tick() - StartTime), 5)))
 	warn(error)
 end
 
------------------>> PUBLIC VARIABLES
------------------>> PUBLIC FUNCTIONS
------------------>> INITIALIZE & START
+----- Public -----
+
+----- Initialize & Connections -----
 
 Knit.AddServices(ServicesFolder)
 
 Knit.Start():andThen(OnServerStartSuccess):catch(OnServerStartFailure):await()
 
------------------>> CONNECTIONS
------------------>> RETURN
+return Module
