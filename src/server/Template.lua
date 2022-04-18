@@ -30,8 +30,6 @@ local Module = {}
 
 ----- Public -----
 
------ Initialize -----
-
------ Connections -----
+----- Initialize & Connections -----
 
 return Module

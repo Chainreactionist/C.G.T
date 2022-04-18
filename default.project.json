@@ -2,12 +2,16 @@
   "name": "A Chain Game Template",
   "tree": {
     "$className": "DataModel",
+
     "ReplicatedStorage": {
       "Shared": {
         "$path": "src/shared"
       },
       "Packages": {
-        "$path": "Packages"
+        "$path": "Packages",
+        "GameAnalytics": {
+          "$path": "Analytics/GameAnalytics"
+        }
       }
     },
     "ServerScriptService": {
@@ -22,6 +26,9 @@
       "StarterPlayerScripts": {
         "Client": {
           "$path": "src/client"
+        },
+        "GameAnalyticsClient": {
+          "$path": "Analytics/GameAnalyticsClient"
         }
       }
     },
@@ -29,6 +36,9 @@
       "$properties": {
         "FilteringEnabled": true
       },
+    "Version": {
+      "$path": "Version"
+    },
       "Baseplate": {
         "$className": "Part",
         "$properties": {

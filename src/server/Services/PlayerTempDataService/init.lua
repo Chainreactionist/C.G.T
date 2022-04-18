@@ -137,6 +137,7 @@ function PlayerTempDataService:GetDataReplica(player: Player | any)
 end
 
 ----- Initialize & Connections -----
+
 function PlayerTempDataService:KnitInit()
 	for _, player in pairs(Players:GetPlayers()) do
 		task.spawn(OnPlayerJoining, player)

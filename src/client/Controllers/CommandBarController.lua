@@ -40,7 +40,7 @@ local CommandBarController = Knit.CreateController({
 ----- Initialize & Connections -----
 
 function CommandBarController:KnitInit()
-	Cmdr:SetActivationKeys({ Enum.KeyCode.RightBracket })
+	Cmdr:SetActivationKeys({ Enum.KeyCode.BackSlash })
 end
 
 return CommandBarController

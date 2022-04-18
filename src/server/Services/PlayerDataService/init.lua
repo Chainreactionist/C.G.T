@@ -65,6 +65,7 @@ local t = require(ReplicatedStorage.Packages.t)
 
 local PlayerDataService = Knit.CreateService({
 	Name = "PlayerDataService",
+	ProfileService = ProfileService,
 	ProfileStore = ProfileService.GetProfileStore("PlayerData", SETTINGS.SaveStructure),
 	Profiles = {},
 	ProfileDataReplicas = {},
@@ -83,6 +84,7 @@ local TYPES = {
 }
 
 local GlobalUpdateHandlers = script.GlobalUpdateHandlers
+local ProfileServiceErrorHandlers = script.ProfileServiceErrorHandlers
 
 ----- Private functions -----
 
@@ -134,8 +136,8 @@ local function OnPlayerJoining(player: Player)
 
 				if LockedUpdateHandler then
 					Promise.try(require(LockedUpdateHandler), UpdateId, UpdateData)
-						:andThen(function(ShouldClear)
-							if ShouldClear then
+						:andThen(function(ClearUpdate: boolean)
+							if ClearUpdate == true then
 								player_profile.GlobalUpdates:ClearLockedUpdate(UpdateId)
 							end
 						end)
@@ -266,20 +268,35 @@ end
 ----- Initialize & Connections -----
 
 function PlayerDataService:KnitInit()
+	--  access for access members of ProfileStore and ProfileService directly through PlayerDataService and Returns Promises as opposed to functions --
+	setmetatable(PlayerDataService, {
+		__index = function(_, index)
+			if PlayerDataService.ProfileService[index] ~= nil then
+				if type(PlayerDataService.ProfileService[index]) == "function" then
+					return Promise.promisify(PlayerDataService.ProfileService[index])
+				end
+				return PlayerDataService.ProfileService[index]
+			elseif PlayerDataService.ProfileStore[index] ~= nil then
+				if type(PlayerDataService.ProfileStore[index]) == "function" then
+					return Promise.promisify(PlayerDataService.ProfileStore[index])
+				end
+				return PlayerDataService.ProfileStore[index]
+			end
+		end,
+	})
+
 	for _, player in pairs(Players:GetPlayers()) do
 		task.spawn(OnPlayerJoining, player)
 	end
 
-	ProfileService.IssueSignal:Connect(function(error_message, profile_store_name, profile_key)
-		warn(
-			string.format(
-				"[PlayerDataService]: ProfileServiceIssue %s %s %s",
-				error_message,
-				profile_store_name,
-				profile_key
-			)
-		)
-	end)
+	-- Used to connect datastore errors to game analytics endpoints --
+	for _, ErrorHandler: ModuleScript in pairs(ProfileServiceErrorHandlers:GetChildren()) do
+		if ErrorHandler:IsA("ModuleScript") then
+			if ProfileService[ErrorHandler.Name] then
+				ProfileService[ErrorHandler.Name]:Connect(require(ErrorHandler))
+			end
+		end
+	end
 
 	Players.PlayerAdded:Connect(OnPlayerJoining)
 	Players.PlayerRemoving:Connect(OnPlayerLeaving)
