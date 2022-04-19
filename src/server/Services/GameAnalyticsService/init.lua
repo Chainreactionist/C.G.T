@@ -5,6 +5,7 @@
 
 -[GameAnalyticsService]---------------------------------------
 	Responsible for initializing the game analytics module
+	
 	Links:
 		https://gameanalytics.com/docs/s/topic/0TO6N000000XZEdWAO/roblox-sdk
 
