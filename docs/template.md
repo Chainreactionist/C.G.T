@@ -1,3 +1,46 @@
+## Module template
+
+It's important to keep code consistent this is what I have found to work really well. Check out the <a href="https://devforum.roblox.com/t/madlife-codeguidebook/1200049" target="_blank">`MadLife - code_guidebook`</a> & <a href="https://roblox.github.io/lua-style-guide/" target="_blank">`Roblox Style Guide`</a>
+```lua
+--!strict
+
+--[[
+{C.G.T}
+
+-[ModuleName]---------------------------------------
+	Module description
+	
+	Members:
+	
+	Functions:
+	
+	Members [ClassName]:
+	
+	Methods [ClassName]:
+	
+--]]
+
+local SETTINGS = {}
+
+----- Loaded Modules -----
+
+----- Module Table -----
+
+local Module = {}
+
+----- Private Variables -----
+
+----- Private functions -----
+
+----- Public -----
+
+----- Initialize & Connections -----
+
+return Module
+```
+
+## Basic Usage
+```lua
 --!strict
 
 --[[
@@ -65,6 +108,7 @@ local t = require(ReplicatedStorage.Packages.t)
 
 local PlayerDataService = Knit.CreateService({
 	Name = "PlayerDataService",
+	ProfileService = ProfileService,
 	ProfileStore = ProfileService.GetProfileStore("PlayerData", SETTINGS.SaveStructure),
 	Profiles = {},
 	ProfileDataReplicas = {},
@@ -285,3 +329,4 @@ function PlayerDataService:KnitInit()
 end
 
 return PlayerDataService
+```
