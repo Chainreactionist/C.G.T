@@ -2,47 +2,47 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>http://chainreactionist.com/C.G.T/</loc>
-         <lastmod>2022-04-19</lastmod>
+         <lastmod>2022-04-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>http://chainreactionist.com/C.G.T/getting-started/</loc>
-         <lastmod>2022-04-19</lastmod>
+         <lastmod>2022-04-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>http://chainreactionist.com/C.G.T/template/</loc>
-         <lastmod>2022-04-19</lastmod>
+         <lastmod>2022-04-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>http://chainreactionist.com/C.G.T/Controllers/CommandBarController/</loc>
-         <lastmod>2022-04-19</lastmod>
+         <lastmod>2022-04-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>http://chainreactionist.com/C.G.T/Controllers/GameAnalyticsController/</loc>
-         <lastmod>2022-04-19</lastmod>
+         <lastmod>2022-04-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>http://chainreactionist.com/C.G.T/Services/CommandBarService/</loc>
-         <lastmod>2022-04-19</lastmod>
+         <lastmod>2022-04-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>http://chainreactionist.com/C.G.T/Services/GameAnalyticsService/</loc>
-         <lastmod>2022-04-19</lastmod>
+         <lastmod>2022-04-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>http://chainreactionist.com/C.G.T/Services/PlayerDataService/</loc>
-         <lastmod>2022-04-19</lastmod>
+         <lastmod>2022-04-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>http://chainreactionist.com/C.G.T/Services/PlayerTempDataService/</loc>
-         <lastmod>2022-04-19</lastmod>
+         <lastmod>2022-04-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
