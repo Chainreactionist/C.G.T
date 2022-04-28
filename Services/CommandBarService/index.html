@@ -63,6 +63,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#setting-up" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -310,9 +315,58 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          CommandBarService
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         CommandBarService
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#setting-up" class="md-nav__link">
+    Setting Up
+  </a>
+  
+    <nav class="md-nav" aria-label="Setting Up">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-commands" class="md-nav__link">
+    Creating Commands
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#permissions" class="md-nav__link">
+    Permissions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -408,6 +462,57 @@
               </div>
             
             
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#setting-up" class="md-nav__link">
+    Setting Up
+  </a>
+  
+    <nav class="md-nav" aria-label="Setting Up">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-commands" class="md-nav__link">
+    Creating Commands
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#permissions" class="md-nav__link">
+    Permissions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content" data-md-component="content">
             <article class="md-content__inner md-typeset">
@@ -420,7 +525,146 @@
 
   <h1>CommandBarService</h1>
 
-<p>Hi</p>
+<p>A module to manage the registering and running of commands made with <a href="https://eryn.io/Cmdr/" target="_blank"><code>Cmdr</code></a></p>
+<h2 id="setting-up">Setting Up</h2>
+<h3 id="creating-commands">Creating Commands</h3>
+<ol>
+<li>Locate the commands folder in <code>ServerScriptService.server.Services.CommandBarService</code></li>
+<li>Create a new folder give it the a name of the command you want to create <code>Test</code></li>
+<li>Create a module with the same name as the folder that returns a description of the command
+   <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a> <span class="kr">return</span> <span class="p">{</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a>     <span class="n">Name</span> <span class="o">=</span> <span class="s2">&quot;test&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a>     <span class="n">Aliases</span> <span class="o">=</span> <span class="p">{},</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a>     <span class="n">Description</span> <span class="o">=</span> <span class="s2">&quot;Test.&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a>     <span class="n">Group</span> <span class="o">=</span> <span class="s2">&quot;Owners, Admins, Moderators&quot;</span><span class="p">,</span> <span class="c1">--The string just has to contain everyone that has access to these commands and is checked by the Hooks.Permissions BeforeRun function</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a>     <span class="n">Args</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a>         <span class="p">{</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a>             <span class="n">Type</span> <span class="o">=</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a>             <span class="n">Name</span> <span class="o">=</span> <span class="s2">&quot;input&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a>             <span class="n">Description</span> <span class="o">=</span> <span class="s2">&quot;some input&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11"></a>         <span class="p">},</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12"></a>     <span class="p">},</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13"></a> <span class="p">}</span>
+</code></pre></div></li>
+<li>Next we create the module to actually run when a command is run and give it the same name as the folder but add <code>Server</code> to the end. This is used by <code>CommandBarService</code> to identify the module to handle the running of the command
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="kr">return</span> <span class="kr">function</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">fromPlayers</span><span class="p">,</span> <span class="n">toPlayer</span><span class="p">)</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a>    <span class="kr">return</span> <span class="s2">&quot;Ran Test.&quot;</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="kr">end</span>
+</code></pre></div></li>
+</ol>
+<h3 id="permissions">Permissions</h3>
+<p>Cmdr uses a BeforeRun and AfterRun system called hooks to filter attempts to run a command and serve as a way to bind functions to after events run.</p>
+<ol>
+<li>To register hooks navigate to the Hooks folder in <code>ServerScriptService.server.Services.CommandBarService</code></li>
+<li>Create a module that similar to this to register new hooks</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="c1">--!strict</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="cm">--[[</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="cm">{C.G.T}</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a>
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="cm">-[Permissions]---------------------------------------</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="cm">    A module made to determine if a player has the permissions run a commands .</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8"></a>
+<a id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="cm">    Members:</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10"></a>
+<a id="__codelineno-2-11" name="__codelineno-2-11"></a><span class="cm">    Functions:</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12"></a>
+<a id="__codelineno-2-13" name="__codelineno-2-13"></a><span class="cm">    Members [ClassName]:</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14"></a>
+<a id="__codelineno-2-15" name="__codelineno-2-15"></a><span class="cm">    Methods [ClassName]:</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16"></a>
+<a id="__codelineno-2-17" name="__codelineno-2-17"></a><span class="cm">--]]</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18"></a>
+<a id="__codelineno-2-19" name="__codelineno-2-19"></a><span class="kd">local</span> <span class="n">SETTINGS</span> <span class="o">=</span> <span class="p">{}</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20"></a>
+<a id="__codelineno-2-21" name="__codelineno-2-21"></a><span class="c1">----- Loaded Modules -----</span>
+<a id="__codelineno-2-22" name="__codelineno-2-22"></a>
+<a id="__codelineno-2-23" name="__codelineno-2-23"></a><span class="kd">local</span> <span class="n">Players</span> <span class="o">=</span> <span class="n">game</span><span class="p">:</span><span class="n">GetService</span><span class="p">(</span><span class="s2">&quot;Players&quot;</span><span class="p">)</span>
+<a id="__codelineno-2-24" name="__codelineno-2-24"></a>
+<a id="__codelineno-2-25" name="__codelineno-2-25"></a><span class="c1">----- Module Table -----</span>
+<a id="__codelineno-2-26" name="__codelineno-2-26"></a>
+<a id="__codelineno-2-27" name="__codelineno-2-27"></a><span class="kd">local</span> <span class="n">Permissions</span>
+<a id="__codelineno-2-28" name="__codelineno-2-28"></a>
+<a id="__codelineno-2-29" name="__codelineno-2-29"></a><span class="c1">----- Private Variables -----</span>
+<a id="__codelineno-2-30" name="__codelineno-2-30"></a>
+<a id="__codelineno-2-31" name="__codelineno-2-31"></a><span class="kd">local</span> <span class="n">Groups</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-2-32" name="__codelineno-2-32"></a>    <span class="n">Owners</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">784730716</span> <span class="p">},</span>
+<a id="__codelineno-2-33" name="__codelineno-2-33"></a>    <span class="n">Admins</span> <span class="o">=</span> <span class="p">{},</span>
+<a id="__codelineno-2-34" name="__codelineno-2-34"></a>    <span class="n">Moderators</span> <span class="o">=</span> <span class="p">{},</span> 
+<a id="__codelineno-2-35" name="__codelineno-2-35"></a>
+<a id="__codelineno-2-36" name="__codelineno-2-36"></a>    <span class="c1">--You can also use functions as a member check 💯</span>
+<a id="__codelineno-2-37" name="__codelineno-2-37"></a>    <span class="c1">-- AccountIsOverADayOld = function(user_id)</span>
+<a id="__codelineno-2-38" name="__codelineno-2-38"></a>    <span class="c1">--  local player = Players:GetPlayerByUserId(user_id)</span>
+<a id="__codelineno-2-39" name="__codelineno-2-39"></a>
+<a id="__codelineno-2-40" name="__codelineno-2-40"></a>    <span class="c1">--  if player then</span>
+<a id="__codelineno-2-41" name="__codelineno-2-41"></a>    <span class="c1">--      if player.AccountAge &gt; 1 then</span>
+<a id="__codelineno-2-42" name="__codelineno-2-42"></a>    <span class="c1">--          return true</span>
+<a id="__codelineno-2-43" name="__codelineno-2-43"></a>    <span class="c1">--      end</span>
+<a id="__codelineno-2-44" name="__codelineno-2-44"></a>    <span class="c1">--  end</span>
+<a id="__codelineno-2-45" name="__codelineno-2-45"></a>
+<a id="__codelineno-2-46" name="__codelineno-2-46"></a>    <span class="c1">--  return false</span>
+<a id="__codelineno-2-47" name="__codelineno-2-47"></a>    <span class="c1">-- end,</span>
+<a id="__codelineno-2-48" name="__codelineno-2-48"></a><span class="p">}</span>
+<a id="__codelineno-2-49" name="__codelineno-2-49"></a>
+<a id="__codelineno-2-50" name="__codelineno-2-50"></a><span class="c1">----- Private functions -----</span>
+<a id="__codelineno-2-51" name="__codelineno-2-51"></a>
+<a id="__codelineno-2-52" name="__codelineno-2-52"></a><span class="c1">----- Public -----</span>
+<a id="__codelineno-2-53" name="__codelineno-2-53"></a>
+<a id="__codelineno-2-54" name="__codelineno-2-54"></a><span class="n">Permissions</span> <span class="o">=</span> <span class="kr">function</span><span class="p">(</span><span class="n">registry</span><span class="p">)</span>
+<a id="__codelineno-2-55" name="__codelineno-2-55"></a>    <span class="n">registry</span><span class="p">:</span><span class="n">RegisterHook</span><span class="p">(</span><span class="s2">&quot;BeforeRun&quot;</span><span class="p">,</span> <span class="kr">function</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
+<a id="__codelineno-2-56" name="__codelineno-2-56"></a>        <span class="kr">if</span> <span class="n">table</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="n">Groups</span><span class="p">.</span><span class="n">Owners</span><span class="p">,</span> <span class="n">context</span><span class="p">.</span><span class="n">Executor</span><span class="p">.</span><span class="n">UserId</span><span class="p">)</span> <span class="kr">then</span>
+<a id="__codelineno-2-57" name="__codelineno-2-57"></a>            <span class="kr">return</span>
+<a id="__codelineno-2-58" name="__codelineno-2-58"></a>        <span class="kr">end</span>
+<a id="__codelineno-2-59" name="__codelineno-2-59"></a>
+<a id="__codelineno-2-60" name="__codelineno-2-60"></a>        <span class="kr">for</span> <span class="n">group_name</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span> <span class="n">member_check</span><span class="p">:</span> <span class="p">{</span> <span class="n">number</span> <span class="p">}</span> <span class="o">|</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="n">boolean</span> <span class="o">|</span> <span class="kc">nil</span> <span class="kr">in</span> <span class="nb">pairs</span><span class="p">(</span><span class="n">Groups</span><span class="p">)</span> <span class="kr">do</span>
+<a id="__codelineno-2-61" name="__codelineno-2-61"></a>            <span class="kr">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">member_check</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;table&quot;</span> <span class="kr">then</span>
+<a id="__codelineno-2-62" name="__codelineno-2-62"></a>                <span class="kr">if</span> <span class="nb">string.find</span><span class="p">(</span><span class="n">group_name</span><span class="p">,</span> <span class="n">context</span><span class="p">.</span><span class="n">Group</span><span class="p">)</span> <span class="kr">then</span>
+<a id="__codelineno-2-63" name="__codelineno-2-63"></a>                    <span class="kr">if</span> <span class="n">table</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="n">member_check</span><span class="p">,</span> <span class="n">context</span><span class="p">.</span><span class="n">Executor</span><span class="p">.</span><span class="n">UserId</span><span class="p">)</span> <span class="kr">then</span>
+<a id="__codelineno-2-64" name="__codelineno-2-64"></a>                        <span class="kr">return</span>
+<a id="__codelineno-2-65" name="__codelineno-2-65"></a>                    <span class="kr">end</span>
+<a id="__codelineno-2-66" name="__codelineno-2-66"></a>                <span class="kr">end</span>
+<a id="__codelineno-2-67" name="__codelineno-2-67"></a>            <span class="kr">elseif</span> <span class="nb">type</span><span class="p">(</span><span class="n">member_check</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;function&quot;</span> <span class="kr">then</span>
+<a id="__codelineno-2-68" name="__codelineno-2-68"></a>                <span class="kd">local</span> <span class="n">success</span><span class="p">,</span> <span class="n">response</span> <span class="o">=</span> <span class="nb">pcall</span><span class="p">(</span><span class="n">member_check</span><span class="p">,</span> <span class="n">context</span><span class="p">.</span><span class="n">Executor</span><span class="p">.</span><span class="n">UserId</span><span class="p">)</span>
+<a id="__codelineno-2-69" name="__codelineno-2-69"></a>
+<a id="__codelineno-2-70" name="__codelineno-2-70"></a>                <span class="kr">if</span> <span class="n">success</span> <span class="o">==</span> <span class="kc">true</span> <span class="ow">and</span> <span class="n">response</span> <span class="o">==</span> <span class="kc">true</span> <span class="kr">then</span>
+<a id="__codelineno-2-71" name="__codelineno-2-71"></a>                    <span class="kr">return</span>
+<a id="__codelineno-2-72" name="__codelineno-2-72"></a>                <span class="kr">end</span>
+<a id="__codelineno-2-73" name="__codelineno-2-73"></a>            <span class="kr">end</span>
+<a id="__codelineno-2-74" name="__codelineno-2-74"></a>        <span class="kr">end</span>
+<a id="__codelineno-2-75" name="__codelineno-2-75"></a>
+<a id="__codelineno-2-76" name="__codelineno-2-76"></a>        <span class="kr">return</span> <span class="s2">&quot;You do not meet the requirements to run this command&quot;</span>
+<a id="__codelineno-2-77" name="__codelineno-2-77"></a>    <span class="kr">end</span><span class="p">)</span>
+<a id="__codelineno-2-78" name="__codelineno-2-78"></a><span class="kr">end</span>
+<a id="__codelineno-2-79" name="__codelineno-2-79"></a>
+<a id="__codelineno-2-80" name="__codelineno-2-80"></a><span class="c1">----- Initialize &amp; Connections -----</span>
+<a id="__codelineno-2-81" name="__codelineno-2-81"></a>
+<a id="__codelineno-2-82" name="__codelineno-2-82"></a><span class="kr">return</span> <span class="n">Permissions</span>
+</code></pre></div>
+<ol>
+<li>This module is included in <code>C.G.T</code> and is responsible for determining who has permissions to run commands</li>
+<li>You can give yourself permissions to run commands by adding your <code>UserId</code> to the <code>Groups</code> table.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>    <span class="kd">local</span> <span class="n">Groups</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a>        <span class="n">Owners</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">784730716</span> <span class="p">},</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a>        <span class="n">Admins</span> <span class="o">=</span> <span class="p">{},</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a>        <span class="n">Moderators</span> <span class="o">=</span> <span class="p">{},</span> 
+<a id="__codelineno-3-5" name="__codelineno-3-5"></a>
+<a id="__codelineno-3-6" name="__codelineno-3-6"></a>        <span class="c1">--You can also use functions as a member check 💯</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7"></a>        <span class="c1">-- AccountIsOverADayOld = function(user_id)</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8"></a>        <span class="c1">--  local player = Players:GetPlayerByUserId(user_id)</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9"></a>
+<a id="__codelineno-3-10" name="__codelineno-3-10"></a>        <span class="c1">--  if player then</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11"></a>        <span class="c1">--      if player.AccountAge &gt; 1 then</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12"></a>        <span class="c1">--          return true</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13"></a>        <span class="c1">--      end</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14"></a>        <span class="c1">--  end</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15"></a>
+<a id="__codelineno-3-16" name="__codelineno-3-16"></a>        <span class="c1">--  return false</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17"></a>        <span class="c1">-- end,</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18"></a>    <span class="p">}</span>
+</code></pre></div></li>
+<li>Members of Groups can either be a table or a function the purpose of having functions is to allow you to add additional logic, examples include checking account age, playtime, is a member of the star creator group e.t.c</li>
+</ol>
 
               
             </article>
