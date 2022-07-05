@@ -8,10 +8,7 @@
         "$path": "src/shared"
       },
       "Packages": {
-        "$path": "Packages",
-        "GameAnalytics": {
-          "$path": "Analytics/GameAnalytics"
-        }
+        "$path": "Packages"
       }
     },
     "ServerScriptService": {
@@ -26,9 +23,6 @@
       "StarterPlayerScripts": {
         "Client": {
           "$path": "src/client"
-        },
-        "GameAnalyticsClient": {
-          "$path": "Analytics/GameAnalyticsClient"
         }
       }
     },

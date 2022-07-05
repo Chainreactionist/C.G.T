@@ -40,11 +40,11 @@ local function RoundDecimalPlaces(num, decimalPlaces)
 	return math.floor(num * mult + 0.5) / mult
 end
 
-local function OnServerStartSuccess()
+local function OnStartSuccess()
 	warn(string.format("Server Started (%s)", RoundDecimalPlaces(tostring(tick() - StartTime), 5)))
 end
 
-local function OnServerStartFailure(error)
+local function OnStartFailure(error)
 	warn(string.format("Server Errored (%s)", RoundDecimalPlaces(tostring(tick() - StartTime), 5)))
 	warn(error)
 end
@@ -55,6 +55,6 @@ end
 
 Knit.AddServices(ServicesFolder)
 
-Knit.Start():andThen(OnServerStartSuccess):catch(OnServerStartFailure):await()
+Knit.Start():andThen(OnStartSuccess):catch(OnStartFailure):await()
 
 return Module

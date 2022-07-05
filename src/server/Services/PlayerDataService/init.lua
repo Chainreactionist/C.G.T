@@ -136,7 +136,7 @@ local function OnPlayerJoining(player: Player)
 				if LockedUpdateHandler then
 					Promise.try(require(LockedUpdateHandler), UpdateId, UpdateData)
 						:andThen(function(ClearUpdate: boolean)
-							if ClearUpdate == true then
+							if ClearUpdate ~= false then
 								player_profile.GlobalUpdates:ClearLockedUpdate(UpdateId)
 							end
 						end)
