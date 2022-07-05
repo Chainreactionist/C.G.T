@@ -5,16 +5,17 @@ repo_url: https://github.com/Chainreactionist/C.G.T
 
 theme:
   icon:
-    logo: material/database
+    logo: material/star
     repo: fontawesome/brands/git-alt
   name: material
   favicon: images/favicon.png
   palette:
-    primary: "deep purple"
-    accent: "deep purple"
+    primary: "light blue"
+    accent: "light blue"
     scheme: slate
   features:
     - content.code.annotate
+    - content.tabs.link
 
 nav:
   - Home: index.md
@@ -24,9 +25,7 @@ nav:
       - PlayerDataService: Services/PlayerDataService.md
       - PlayerTempDataService: Services/PlayerTempDataService.md
       - CommandBarService: Services/CommandBarService.md
-      - GameAnalyticsService: Services/GameAnalyticsService.md
   - Controllers:
-      - GameAnalyticsController: Controllers/GameAnalyticsController.md
       - CommandBarController: Controllers/CommandBarController.md
 
 markdown_extensions:

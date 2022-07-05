@@ -51,6 +51,8 @@ local t = require(ReplicatedStorage.Packages.t)
 
 local PlayerTempDataService = Knit.CreateService({
 	Name = "PlayerTempDataService",
+	Datas = {},
+	DataReplicas = {},
 })
 
 ----- Private Variables -----
@@ -88,9 +90,6 @@ local function OnPlayerLeaving(player: Player)
 end
 
 ----- Public -----
-
-PlayerTempDataService.Datas = {}
-PlayerTempDataService.DataReplicas = {}
 
 function PlayerTempDataService:GetData(player: Player | any)
 	assert(t.instance("Player")(player))
