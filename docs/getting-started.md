@@ -9,7 +9,7 @@
 === "VS Code Release"
     1. Go to <a href= "https://github.com/Chainreactionist/C.G.T/releases/latest" target = "_blank">`https://github.com/Chainreactionist/C.G.T/releases/latest`</a>.
     2. Download the .zip file.
-    3. Unzip the file by double clicking it and opening it in visual studio code or your editor of choice.
+    3. Unzip the file by double clicking it and open it in visual studio code or your editor of choice.
     4. Out of the box all you need to do next is `Start Rojo` using to VS code rojo plugin and then connect using the roblox studio roblox plugn.
     ![Image title](images/getting-started/start-rojo.png){ align=left }
     ![Image title](images/getting-started/connect-rojo.png){ align=left }

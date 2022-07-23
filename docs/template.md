@@ -20,9 +20,10 @@ It's important to keep code consistent this is what I have found to work really 
 	
 --]]
 
-local SETTINGS = {}
 
 ----- Loaded Modules -----
+
+local SETTINGS = {}
 
 ----- Module Table -----
 
@@ -83,15 +84,6 @@ return Module
 
 --]]
 
-local SETTINGS = {
-	MockProfiles = false,
-	SaveStructure = {
-		SomeData = 0,
-	},
-}
-
-type UpdateData = { Id: string, SenderId: number, TimeSent: number, ReceiverId: number, Data: {} }
-
 ----- Loaded Modules -----
 
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
@@ -104,11 +96,20 @@ local Knit = require(ReplicatedStorage.Packages.knit)
 local Promise = require(ReplicatedStorage.Packages.promise)
 local t = require(ReplicatedStorage.Packages.t)
 
+local SETTINGS = {
+	MockProfiles = false,
+	ClassToken = ReplicaService.NewClassToken("PlayerData"),
+	SaveStructure = {
+		SomeData = 0,
+	},
+}
+
+type UpdateData = { Id: string, SenderId: number, TimeSent: number, ReceiverId: number, Data: {} }
+
 ----- Module Table -----
 
 local PlayerDataService = Knit.CreateService({
 	Name = "PlayerDataService",
-	ProfileService = ProfileService,
 	ProfileStore = ProfileService.GetProfileStore("PlayerData", SETTINGS.SaveStructure),
 	Profiles = {},
 	ProfileDataReplicas = {},
@@ -157,7 +158,7 @@ local function OnPlayerJoining(player: Player)
 
 		if player:IsDescendantOf(Players) == true then
 			local ProfileReplica = ReplicaService.NewReplica({
-				ClassToken = ReplicaService.NewClassToken("PlayerData"),
+				ClassToken = SETTINGS.ClassToken,
 				Tags = { Player = player },
 				Data = player_profile.Data,
 				Replication = "All",
@@ -180,7 +181,7 @@ local function OnPlayerJoining(player: Player)
 				if LockedUpdateHandler then
 					Promise.try(require(LockedUpdateHandler), UpdateId, UpdateData)
 						:andThen(function(ClearUpdate: boolean)
-							if ClearUpdate == true then
+							if ClearUpdate ~= false then
 								player_profile.GlobalUpdates:ClearLockedUpdate(UpdateId)
 							end
 						end)

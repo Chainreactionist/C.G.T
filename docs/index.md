@@ -15,10 +15,8 @@ C.G.T provides you with all the basic tools you would need to get started on new
 * `PlayerDataService` - A module to manage the loading and unloading of player data.
 * `PlayerTempDataService` - A module to manage the loading and unloading of temporary player data.
 * `CommandBarService` - A module that allows you to easily create admin commands using the CMDR module by Evaera❤️.
-* `GameAnalyticsService` - Responsible for initializing the game analytics module.
 
 ## Controllers currently available
-* `GameAnalyticsController` - Responsible for initializing the game analytics on the client.
 * `CommandBarController` - Register's keybindings for opening the CommandBar.
 
 ## Services in the works
@@ -26,6 +24,6 @@ C.G.T provides you with all the basic tools you would need to get started on new
 * `SettingsService` - A module to manage players settings and create events for settings changes.
 
 ## Controllers in the works
-* `N/A` Currently non in the work but the eventual goal is to implement recommendations from the community.
+* `SettingsService`
 
 [Get Started](getting-started.md){ .md-button }
