@@ -30,12 +30,6 @@
 		
 --]]
 
-local SETTINGS = {
-	SaveStructure = {
-		SomeData = 0,
-	},
-}
-
 ----- Loaded Modules -----
 
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
@@ -46,6 +40,13 @@ local TableUtil = require(ReplicatedStorage.Packages["table-util"])
 local Knit = require(ReplicatedStorage.Packages.knit)
 local Promise = require(ReplicatedStorage.Packages.promise)
 local t = require(ReplicatedStorage.Packages.t)
+
+local SETTINGS = {
+	ClassToken = ReplicaService.NewClassToken("PlayerTempData"),
+	SaveStructure = {
+		SomeData = 0,
+	},
+}
 
 ----- Module Table -----
 
@@ -64,7 +65,7 @@ local function OnPlayerJoining(player: Player)
 
 	if player:IsDescendantOf(Players) == true then
 		local data_replica = ReplicaService.NewReplica({
-			ClassToken = ReplicaService.NewClassToken("PlayerTempData"),
+			ClassToken = SETTINGS.ClassToken,
 			Tags = { Player = player },
 			Data = Data,
 			Replication = "All",
