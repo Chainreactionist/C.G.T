@@ -1,4 +1,4 @@
-**C.G.T** -  is a game template that aims to simplify the game prototyping and development process by providing a standardized development environment. C.G.T provides you with all the basic tools you would need to start a new project and prevent you from shooting yourself in the foot by spending time on the non-prototyping related parts of the project.
+**C.G.T** -  is a game template that aims to simplify the game prototyping and development process by providing a standardized development environment. C.G.T provides you with all the essential tools you would need to start a new project and prevent you from shooting yourself in the foot by spending time on the non-prototyping-related parts of the project.
 
 !!! info
     Contribute to C.G.T. If you make a `Service` or `Controller` that you find very helpful and you think it should be included. Make a pull request or contact me or share it in the discord server.
