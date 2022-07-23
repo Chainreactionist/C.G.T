@@ -521,7 +521,7 @@
    <img alt="Image" src="../../images/Services/CommandBarService/Groups.png" /></p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>All members of Owners are able to run commands regardless of whether or not they have been distinctly given permission in the command description module. I recommend only including yourself or the account that manages the game.</p>
+<p>All members of Owners are able to run commands regardless of whether or not they have been distinctly given permission in the command description module. I recommend only including yourself or the account that manages the game in this table.</p>
 </div>
 </li>
 </ol>
@@ -641,7 +641,8 @@
 </code></pre></div>
 <ol>
 <li>This module is included in <code>C.G.T</code> and is responsible for determining who has permissions to run commands</li>
-<li>You can give yourself permissions to run commands by adding your <code>UserId</code> to the <code>Groups</code> table.
+<li>
+<p>You can give yourself permissions to run commands by adding your <code>UserId</code> to the <code>Groups</code> table.
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="kd">local</span> <span class="n">Groups</span> <span class="o">=</span> <span class="p">{</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2"></a>    <span class="n">Owners</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">69420</span> <span class="p">},</span>
 <a id="__codelineno-3-3" name="__codelineno-3-3"></a>    <span class="n">Admins</span> <span class="o">=</span> <span class="p">{},</span>
@@ -660,14 +661,10 @@
 <a id="__codelineno-3-16" name="__codelineno-3-16"></a>    <span class="c1">--  return false</span>
 <a id="__codelineno-3-17" name="__codelineno-3-17"></a>    <span class="c1">-- end,</span>
 <a id="__codelineno-3-18" name="__codelineno-3-18"></a><span class="p">}</span>
-</code></pre></div></li>
-</ol>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>All members of Owners are able to run commands regardless of whether or not they have been distinctly given permission in the command description module. Only include yourself or the account that manages the game in this.</p>
-</div>
-<ol>
-<li>Lastly make sure you give yourself other members of your team permission to run the command by including their group in the description module.
+</code></pre></div></p>
+</li>
+<li>
+<p>Lastly make sure you give yourself other members of your team permission to run the command by including their group in the description module.
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="kr">return</span> <span class="p">{</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2"></a>    <span class="n">Name</span> <span class="o">=</span> <span class="s2">&quot;test&quot;</span><span class="p">,</span>
 <a id="__codelineno-4-3" name="__codelineno-4-3"></a>    <span class="n">Aliases</span> <span class="o">=</span> <span class="p">{},</span>
@@ -681,7 +678,8 @@
 <a id="__codelineno-4-11" name="__codelineno-4-11"></a>        <span class="p">},</span>
 <a id="__codelineno-4-12" name="__codelineno-4-12"></a>    <span class="p">},</span>
 <a id="__codelineno-4-13" name="__codelineno-4-13"></a><span class="p">}</span>
-</code></pre></div></li>
+</code></pre></div></p>
+</li>
 <li>Members of Groups can either be a table or a function the purpose of having functions is to allow you to add additional logic, examples include checking account age, playtime, is a member of the star creator group e.t.c</li>
 </ol>
 
