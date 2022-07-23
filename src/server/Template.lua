@@ -16,9 +16,9 @@
 	
 --]]
 
-local SETTINGS = {}
-
 ----- Loaded Modules -----
+
+local SETTINGS = {}
 
 ----- Module Table -----
 

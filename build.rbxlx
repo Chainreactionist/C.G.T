@@ -27811,8 +27811,11 @@ function TestService:KnitStart()
 
 	local player = Players:GetPlayers()[1] or Players.PlayerAdded:Wait()
 
-	player_data_service:GetDataReplica(player):andThen(function(ProfileReplica)
-		ProfileReplica:SetValue("SomeData", ProfileReplica.Data.SomeData + 100)
+	game.Workspace.Part.ClickDetector.MouseClick:Connect(function()
+		player_data_service:GetDataReplica(player):andThen(function(ProfileReplica)
+			ProfileReplica:SetValue("SomeData", ProfileReplica.Data.SomeData + 100)
+			print(ProfileReplica.Data.SomeData)
+		end)
 	end)
 end
 

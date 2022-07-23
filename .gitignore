@@ -9,3 +9,4 @@ ServerPackages
 src/server/Services/TestService.lua
 src/client/Controllers/TestController.lua
 .vscode
+.DS_Store

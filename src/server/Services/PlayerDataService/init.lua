@@ -40,15 +40,6 @@
 
 --]]
 
-local SETTINGS = {
-	MockProfiles = false,
-	SaveStructure = {
-		SomeData = 0,
-	},
-}
-
-type UpdateData = { Id: string, SenderId: number, TimeSent: number, ReceiverId: number, Data: {} }
-
 ----- Loaded Modules -----
 
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
@@ -60,6 +51,16 @@ local ReplicaService = require(ReplicatedStorage.Packages.replicaservice)
 local Knit = require(ReplicatedStorage.Packages.knit)
 local Promise = require(ReplicatedStorage.Packages.promise)
 local t = require(ReplicatedStorage.Packages.t)
+
+local SETTINGS = {
+	MockProfiles = false,
+	ClassToken = ReplicaService.NewClassToken("PlayerData"),
+	SaveStructure = {
+		SomeData = 0,
+	},
+}
+
+type UpdateData = { Id: string, SenderId: number, TimeSent: number, ReceiverId: number, Data: {} }
 
 ----- Module Table -----
 
@@ -113,7 +114,7 @@ local function OnPlayerJoining(player: Player)
 
 		if player:IsDescendantOf(Players) == true then
 			local ProfileReplica = ReplicaService.NewReplica({
-				ClassToken = ReplicaService.NewClassToken("PlayerData"),
+				ClassToken = SETTINGS.ClassToken,
 				Tags = { Player = player },
 				Data = player_profile.Data,
 				Replication = "All",
