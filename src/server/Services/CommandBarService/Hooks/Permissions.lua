@@ -29,7 +29,7 @@ local Permissions
 ----- Private Variables -----
 
 local Groups = {
-	Owners = { 784730716 },
+	Owners = {},
 	Admins = {},
 	Moderators = {},
 	--You can also use functions as a member check 💯
@@ -72,7 +72,7 @@ Permissions = function(registry)
 			end
 		end
 
-		return "You do not meet the requirements to run this command"
+		return "You do not meet the requirements to run this command" .. " | " .. context.Group
 	end)
 end
 

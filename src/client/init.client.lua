@@ -23,6 +23,7 @@ local StarterPlayerScripts = script.Parent
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
 local Knit = require(ReplicatedStorage.Packages.knit)
+local ReplicaController = require(game.ReplicatedStorage.Packages.replicaservice)
 
 ----- Module Table -----
 
@@ -30,14 +31,25 @@ local Module = {}
 
 ----- Private Variables -----
 
-local KnitStartTime = tick()
+local StartTime = tick()
 local ServicesFolder = StarterPlayerScripts.Client.Controllers
 
 ----- Private functions -----
 
-local function RoundDecimalPlaces(num, decimalPlaces)
+local function RoundDecimalPlaces(num: number, decimalPlaces: number)
 	local mult = 10 ^ (decimalPlaces or 0)
 	return math.floor(num * mult + 0.5) / mult
+end
+
+local function OnStartSuccess()
+	warn(string.format("Client Started (%s)", tostring(RoundDecimalPlaces(tick() - StartTime, 3))))
+
+	ReplicaController.RequestData()
+end
+
+local function OnStartFailure(error)
+	warn(string.format("Client Errored (%s)", tostring(RoundDecimalPlaces(tick() - StartTime, 3))))
+	warn(error)
 end
 
 ----- Public -----
@@ -46,10 +58,6 @@ end
 
 Knit.AddControllers(ServicesFolder)
 
-Knit.Start()
-	:andThen(function()
-		warn(string.format("Client Started (%s)", RoundDecimalPlaces(tostring(tick() - KnitStartTime), 5)))
-	end)
-	:catch(warn)
+Knit.Start():andThen(OnStartSuccess):catch(OnStartFailure)
 
 return Module

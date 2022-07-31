@@ -15,8 +15,6 @@
 	Methods [ClassName]:
 --]]
 
-local SETTINGS = {}
-
 ----- Loaded Modules -----
 local ServerScriptService = game:GetService("ServerScriptService")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
@@ -24,6 +22,8 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Knit = require(ReplicatedStorage.Packages.knit)
 local Cmdr = require(ServerScriptService.ServerPackages.Cmdr)
 local TableUtil = require(ReplicatedStorage.Packages["table-util"])
+
+local SETTINGS = {}
 
 ----- Module Table -----
 
