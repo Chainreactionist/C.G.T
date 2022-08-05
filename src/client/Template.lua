@@ -25,7 +25,7 @@ local SETTINGS = {}
 
 ----- Module Table -----
 
-local Module = Knit.CreateService({ Name = "Module" })
+local Module = Knit.CreateController({ Name = "Module" })
 
 ----- Private Variables -----
 
